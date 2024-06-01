@@ -10,7 +10,7 @@
 
 - 💬 Ask me about **Java,Cpp,Python,Kotlin,Javascript.**
 
-- 📫 How to reach me **adityasinghrajput21072000@gmail.com**
+- 📫 How to reach me **adityaraj494500gmail.com**
 
 - ⚡ Fun fact **I stick like a glue with any project to make it better than ever.**
 
