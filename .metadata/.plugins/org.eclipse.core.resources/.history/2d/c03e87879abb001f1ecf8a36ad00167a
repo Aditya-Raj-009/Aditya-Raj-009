@@ -1,0 +1,30 @@
+package com.employee.main.dto;
+
+import org.antlr.v4.runtime.misc.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class EmployeeDTO {
+
+	private long Id = 1;
+	private String fname = "Aditya";
+	private String lname = "Singh";
+    
+	private String email = "aditya123@gmail.com";
+	private double salary = 89.25;
+	private int no_of_leaves = 5;
+	private String joining_date = "20-11-2024";
+	private String department = "Software Engineer";
+	
+
+
+	
+	
+}

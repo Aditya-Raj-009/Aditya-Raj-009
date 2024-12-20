@@ -1,0 +1,37 @@
+package com.employee.main.service;
+
+import org.springframework.stereotype.Service;
+
+import com.employee.main.Repository.EmployeeRepository;
+import com.employee.main.dto.EmployeeDTO;
+import com.employee.main.entities.Employee;
+import com.employee.main.mapper.EmployeeMapper;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class EmployeeServiceImplementation implements EmployeeService {
+
+	private EmployeeRepository employeeRepository;
+	
+	@Override
+	public EmployeeDTO createNewEmployee(EmployeeDTO empDto) {
+	    // Map the DTO to an Employee entity
+	    Employee newEmployee = EmployeeMapper.mapToEmployee(empDto);
+
+	    // Ensure the ID is not set for new records
+	    newEmployee.setId(0); // Optional, as Hibernate ignores IDs for @GeneratedValue
+
+	    // Save the new employee to the database
+	    Employee savedEmployee = employeeRepository.save(newEmployee);
+
+	    // Map the saved entity back to a DTO for the response
+	    return EmployeeMapper.mapToEmployeeDto(savedEmployee);
+	}
+
+	
+	
+
+	
+}

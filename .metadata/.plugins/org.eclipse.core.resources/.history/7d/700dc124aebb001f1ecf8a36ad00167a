@@ -1,0 +1,9 @@
+package com.employee.main.service;
+
+import com.employee.main.dto.EmployeeDTO;
+
+public interface EmployeeService {
+	
+	public EmployeeDTO createNewEmployee(EmployeeDTO empDto);
+
+}

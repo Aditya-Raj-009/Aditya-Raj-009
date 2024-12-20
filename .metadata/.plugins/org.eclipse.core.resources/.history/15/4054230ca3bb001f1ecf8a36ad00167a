@@ -1,0 +1,31 @@
+package com.employee.main.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.employee.main.dto.EmployeeDTO;
+import com.employee.main.entities.Employee;
+import com.employee.main.mapper.EmployeeMapper;
+import com.employee.main.service.EmployeeServiceImplementation;
+
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping("/api/employees")
+@AllArgsConstructor
+public class EmployeeController {
+	
+	private EmployeeServiceImplementation empServiece;
+	
+	@PostMapping("/newEmployee")
+	public ResponseEntity<Employee> createNewEmployee(@RequestBody EmployeeDTO empDto){
+		EmployeeDTO saveEmployee = empServiece.createNewEmployee(empDto);
+	    return ResponseEntity.status(HttpStatus.CREATED).body(EmployeeMapper.mapToEmployee(saveEmployee));
+
+	}
+
+}

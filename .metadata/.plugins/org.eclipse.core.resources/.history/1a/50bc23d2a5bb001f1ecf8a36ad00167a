@@ -1,0 +1,39 @@
+package com.employee.main.service;
+
+import org.springframework.stereotype.Service;
+
+import com.employee.main.Repository.EmployeeRepository;
+import com.employee.main.dto.EmployeeDTO;
+import com.employee.main.entities.Employee;
+import com.employee.main.mapper.EmployeeMapper;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class EmployeeServiceImplementation implements EmployeeService {
+
+	private EmployeeRepository employeeRepository;
+	
+	@Override
+	public EmployeeDTO createNewEmployee(EmployeeDTO empDto) {
+	    Employee existingEmployee = employeeRepository.findById(empDto.getId())
+	        .orElseThrow(() -> new RuntimeException("Employee not found"));
+	    
+	    existingEmployee.setFname(empDto.getFname());
+	    existingEmployee.setLname(empDto.getLname());
+	    existingEmployee.setSalary(empDto.getSalary());
+	    existingEmployee.setDepartment(empDto.getDepartment());
+	    existingEmployee.setJoining_date(empDto.getJoining_date());
+	    existingEmployee.setEmail(empDto.getEmail());
+	    existingEmployee.setNo_of_leaves(empDto.getNo_of_leaves());
+	    
+	    Employee savedEmployee = employeeRepository.save(existingEmployee);
+	    return EmployeeMapper.mapToEmployeeDto(savedEmployee);
+	}
+
+	
+	
+
+	
+}
